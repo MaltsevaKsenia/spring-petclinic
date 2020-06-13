@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Build') {
            steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
@@ -11,8 +11,8 @@ pipeline {
                 sh 'mvn test'
             }
              post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                always {
+                    junit 'target/surefire-reports/*.xml' 
                 }
             }
         }
