@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
            steps {
-              sh 'mvn --version'
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
         }
     }
