@@ -16,15 +16,15 @@ pipeline {
                 }
             }
         }
-        stage('Sonarqube') {
-            tools {
-                sonarQube 'LocalSonarScanner'
-           }
+       stage("SonarQube Analysis") {
+          agent any
           steps {
-            withSonarQubeEnv('SonarQube Scanner') {
-              sh 'sonar-scanner'
+            script {
+                def scannerHome = tool 'SonarQube Scanner 4.3';
+                withSonarQubeEnv("foo") {
+                  sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
-        }
-    }
+       }
   }
 }
