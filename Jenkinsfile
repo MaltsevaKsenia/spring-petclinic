@@ -17,16 +17,13 @@ pipeline {
             }
         }
         stage('Sonarqube') {
-            environment {
-                scannerHome = tool 'LocalSonarScanner'
-            }    
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }        timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+            tools {
+                sonarQube 'LocalSonarScanner'
+           }
+          steps {
+            withSonarQubeEnv('SonarQube Scanner') {
+              sh 'sonar-scanner'
             }
-        }        
+        }
     }
 }
