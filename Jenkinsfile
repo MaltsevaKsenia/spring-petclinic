@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    environment {
+      VERSION = VersionNumber([
+          versionNumberString: 'BUILDS_THIS_YEAR', 
+       worstResultForIncrement: 'SUCCESS'
+
+      ]);
+    }
     stages {
         stage('Build') {
            steps {
