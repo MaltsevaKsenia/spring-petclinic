@@ -1,9 +1,15 @@
 pipeline {
     agent any
+    environment {
+      VERSION = VersionNumber([
+        versionNumberString : '${BUILD_YEAR}.${BUILDS_THIS_YEAR}',
+        projectStartDate : '2014-05-19'
+      ]);
+    }
     stages {
         stage('Build') {
            steps {
-                sh 'mvn -Dmaven.test.skip=true install -Dproject.version=${BUILD_YEAR}.${BUILDS_THIS_YEAR}' 
+                sh 'mvn -Dmaven.test.skip=true install -Dproject.version=${VERSION}' 
             }
         }
          stage('Tests') {
