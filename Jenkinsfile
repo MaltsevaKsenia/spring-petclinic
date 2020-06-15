@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
       VERSION = VersionNumber([
-          versionNumberString: 'BUILDS_THIS_YEAR', 
+          versionNumberString: ${BUILDS_THIS_YEAR},
        worstResultForIncrement: 'SUCCESS'
 
       ]);
