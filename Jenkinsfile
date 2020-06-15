@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
            steps {
-                sh 'mvn -Dmaven.test.skip=true install -Dproject.version=${VERSION}' 
+                sh 'mvn -Dmaven.test.skip=true install -Dproject.version=1' 
             }
         }
          stage('Tests') {
