@@ -17,7 +17,6 @@ pipeline {
             }
         }
        stage("SonarQube Analysis") {
-          agent any
           steps {
             script {
                 def scannerHome = tool 'LocalSonarScanner';
