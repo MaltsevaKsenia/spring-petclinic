@@ -22,6 +22,7 @@ pipeline {
         }
        stage("SonarQube Analysis") {
           steps {
+            sh 'mvn jacoco:report'
             script {
                 def scannerHome = tool 'LocalSonarScanner';
                 withSonarQubeEnv("LocalSonar") {
