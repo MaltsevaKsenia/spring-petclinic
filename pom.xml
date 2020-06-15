@@ -218,8 +218,8 @@
             <id>report</id>
             <phase>prepare-package</phase>
             <goals>
-              <goal>report</goal>
-            </goals>
+               <goal>prepare-agent</goal>
+              </goals>
           </execution>
         </executions>
       </plugin>
